@@ -1,6 +1,6 @@
 // Imports
 import Logger from 'https://deno.land/x/stick@1.0.0-beta4/mod.ts';
-import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
+import ohm from 'https://cdn.jsdelivr.net/npm/ohm-js/dist/ohm.esm.js';
 import * as utils from './utils.ts';
 import { BaseHTMLIntermediary, BodiedHTMLIntermediary, CustomHTMLIntermediary, ImportMetaDesc, ModifyMetaDesc, PostProcessorMetaDesc, PreProcessorMetaDesc, TitleMetaDesc, UnBodiedHTMLIntermediary } from './types.ts';
 import grammarSrc from './grammar.ts';

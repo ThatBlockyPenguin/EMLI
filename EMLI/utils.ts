@@ -1,4 +1,4 @@
-import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
+import ohm from 'https://cdn.jsdelivr.net/npm/ohm-js/dist/ohm.esm.js';
 import placeholders from './imports.ts';
 import { BaseHTMLIntermediary, HTMLIntermediary } from './types.ts';
 
