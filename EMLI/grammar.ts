@@ -22,7 +22,7 @@ EMLI {
          | "\"" (~"\"" ~nl any)* "\""
          | "${'`'}" (~"${'`'}" any)* "${'`'}"
   
-  jsBody = "{" (~"}" any)* "}"
+  jsBody = "~{" (~"}" any)* "}~"
   
   comments = comment | htmlComment
   comment = "//" (~nl any)* nl
