@@ -28,4 +28,4 @@ EMLI {
   comment = "//" (~nl any)* nl
   htmlComment = "/!" (~nl any)* nl
 }
-`.replace('{backQuote}', '`');
+`.replaceAll('{backQuote}', '`');
