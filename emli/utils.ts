@@ -74,5 +74,5 @@ export function arrToObj(arr: Record<string, HTMLIntermediary>[]): Record<string
 }
                                                                           // Start of string > one or more "/"
 export function read(file: string): string {                              // Or end of string > one or more "/"
-  return Deno.readTextFileSync(path.dirname(import.meta.url).replace('file:', '').replace(/^\/+|\/+$/g, '') + '/' + file);
+  return Deno.readTextFileSync(path.dirname(Deno.mainModule).replace('file:', '').replace(/^\/+|\/+$/g, '') + '/' + file);
 }
