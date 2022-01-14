@@ -20,7 +20,7 @@ EMLI {
   nl (a new line) = "\\n"
   string = "'" (~"'" ~nl any)* "'"
          | "\"" (~"\"" ~nl any)* "\""
-         | "{backQuote}" (~"{backQuote}" any)* "{backQuote}"
+         | "\`" (~"\`" any)* "\`"
   
   jsBody = "{" (~"}" any)* "}"
   
@@ -28,4 +28,4 @@ EMLI {
   comment = "//" (~nl any)* nl
   htmlComment = "/!" (~nl any)* nl
 }
-`.replaceAll('{backQuote}', '`');
+`;
