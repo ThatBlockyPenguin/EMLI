@@ -15,6 +15,8 @@ If you ever wish to uninstall EMC, just run `deno uninstall emc`.
 
 To update EMC, simply uninstall it, run `deno cache --reload https://emli.blockypenguin.com/EMLI/mod.ts`, then install it again.
 
+To learn more about EMC, look [here](/doc/emc).
+
 ## Hello, World
 To create a simple "Hello, World" file in EMLI, first create a file called 'index.emli'.
 
