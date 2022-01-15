@@ -48,7 +48,7 @@ So, what just happened there?
 
 Well, let's start at the top.
 <br>
-`#import css '$bootstrap';` is a MetaCode, specifically an *import* MetaCode. All MetaCodes start with a '#'. `css` tells EMC that specifically, we are importing a css file. Lastly, `'$bootstrap'` is a string. You can get various types of strings, but more on that later. You can also import JavaScript files by using `#import js './path/to.js'.
+`#import css '$bootstrap';` is a MetaCode, specifically an *import* MetaCode. All MetaCodes start with a '#'. `css` tells EMC that specifically, we are importing a CSS file. Lastly, `'$bootstrap'` is a string. You can get various types of strings, but more on that later. You can also import JavaScript files by using `#import js './path/to.js'`.
 
 You might notice that `$bootstrap` doesn't point to a file at all. We'll learn more about this in [Advanced Topics](advanced-topics), so for now, just take it to mean that it imports [Bootstrap CSS](https://getbootstrap.com/).
 
