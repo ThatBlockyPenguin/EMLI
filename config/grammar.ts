@@ -18,10 +18,14 @@ EMLI {
   Property = identifier ":" string
   
   identifier = ("-" | alnum)+
-  nl (a new line) = "\\n"
-  string = "'" (~"'" ~nl any)* "'"
-         | "\"" (~"\"" ~nl any)* "\""
-         | "${'`'}" (~"${'`'}" any)* "${'`'}"
+  nl (a new line) = "\n" | "\r" | "\u2028" | "\u2029"
+  string = sQuot (~(sQuot | nl) any)* sQuot
+         | dQuot (~(dQuot | nl) any)* dQuot
+         | gQuot (~gQuot any)* gQuot
+  
+  sQuot (single quote) = "'"
+  dQuot (double quote) = "\""
+  gQuot (multiline quote) = "${'`'}"
   
   jsBody = "~{" (~"}" any)* "}~"
   
