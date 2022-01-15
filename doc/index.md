@@ -2,9 +2,15 @@ Documentation
 =============
 
 - [Installation](#installation)
+- [Pre-Knowledge](#pre-knowledge)
 - [Hello, World](#hello-world)
 - [Fundamentals](#fundamentals)
 - [Advanced Topics](#advanced-topics)
+
+## Pre-Knowledge
+It is recommended that you have at least a basic understanding of HTML before starting with EMLI. While it is certainly possible to learn EMLI with no prior knowledge of HTML, it certainly helps. I personally recommend [Mozilla's Getting Started Guide](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started).
+
+You should also know the basics of how to use a terminal/command prompt. Since these vary between operating systems, I'll leave that up to you.
 
 ## Installation
 To install **EMC** - the **EM**LI **C**ompiler - you firstly need to have [deno](https://deno.land) installed. You can do this by visiting their website and running the appropriate script for your system.
