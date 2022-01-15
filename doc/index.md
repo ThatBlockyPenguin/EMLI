@@ -54,7 +54,7 @@ You might notice that `$bootstrap` doesn't point to a file at all. We'll learn m
 
 Next up, `div (class: 'container') { ... }`. This is an Element. In this case, a `div` element, which is exactly the same as from HTML. One major difference between HTML and EMLI though, is that element properties are not defined like so: `<div abc="xyz">`, but like so: `div (abc: 'xyz')`. This means that here, we are creating a `div` element with a class of `container`. If you've used Bootstrap before, you'll know that the `container` class is used as the *"root"* of most Bootstrap webpages. Here is no different.
 
-Following our `div`, we have a Body. Bodies are any amount of elements or strings surrounded by `{ curly braces }`. For elements that are not "self closing" - in other words, they have a closing tag (`</div>`) - they must have a body. EMC will not throw an error if they don't, but browsers may struggle to render your webpage correctly. The Body of our `div` contains the rest of our webpage code.
+Following our `div`, we have a Body. Bodies are any amount of elements or strings surrounded by `{ curly braces }`. For elements that are not "self closing" - in other words, if they have a closing tag (e.g. `</div>`) - they must have a body. EMC will not throw an error if they don't, but browsers may struggle to render your webpage correctly. The Body of our `div` contains the rest of our webpage code.
 
 Just inside it, we have `h1 { 'Hello, World!' }`. This is also the equivalent of HTML: h1 is our largest heading element. It does not have any "brackets" or "parentheses" `()` as it does not need to specify any properties. It contains the text "Hello, World!", which will render inside the `h1` element on the webpage.
 
