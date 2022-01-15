@@ -80,12 +80,12 @@ Note that the PostProcessor and PreProcessor MetaCodes do not require a semicolo
 *Title* MetaCodes follow the syntax of `#title <string>;`, where `<string>` is any EMLI string. The contents of the string will be used as the title of the page.
 
 #### PostProcessor
-*PostProcessor* MetaCodes follow the syntax of `#postprocessor ~{ <javascript code> }~`, where `<javascript code>` is code, written in javascript, that will get executed after the EMLI file has been compiled. Note the tildes `~` surrounding the code block. They can be used to modify the structure of the outputted HTML document.
+*PostProcessor* MetaCodes follow the syntax of `#postprocessor ~{ <javascript code> }~`, where `<javascript code>` is code, written in javascript, that will get executed after the EMLI file has been compiled. They can be used to modify the structure of the outputted HTML document. Note the tildes `~` surrounding the code block.
 
 ***NOTE: PostProcessors are not yet implemented and will have no effect!***
 
 #### PreProcessor
-*PreProcessor* MetaCodes follow the syntax of `#preprocessor ~{ <javascript code> }~`, where `<javascript code>` is code, written in javascript, that will get executed before the EMLI file has been compiled, but after the HTML template has been loaded. Note the tildes `~` surrounding the code block. They can be used to modify the structure of the outputted HTML document.
+*PreProcessor* MetaCodes follow the syntax of `#preprocessor ~{ <javascript code> }~`, where `<javascript code>` is code, written in javascript, that will get executed before the EMLI file has been compiled, but after the HTML template has been loaded. They can be used to modify the structure of the outputted HTML document. Note the tildes `~` surrounding the code block.
 
 ***NOTE: PreProcessors are not yet implemented and will have no effect!***
 
