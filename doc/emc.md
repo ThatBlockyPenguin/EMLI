@@ -15,7 +15,7 @@ If you ever wish to uninstall EMC, just run `deno uninstall emc`.
 To update EMC, simply uninstall it, then install it again.
 
 ## How to run
-Once installed, you can run in at any time by opening a terminal/command prompt and entering `emc`. By default, EMC will look for a file in that directory called 'index.emli', and will output the compiled file in that directory as 'index.html'.
+Once installed, you can run in at any time by opening a terminal/command prompt and entering `emc`. By default, EMC will look for a file in that directory called 'index.emli', and will output the compiled file in that directory as '<inputted file name>.html'.
 
 ## Options
 If you want to run EMC on a file in a different directory, or not called 'index.emli', then the options are for you.
@@ -26,10 +26,10 @@ emc <emli file name> <html file name>
 ```
 In that specific order. If you want to change the positions of the arguments, you can use Named Flags:
 ```
-emc --file=<emli file name> --out<html file name>
+emc --file=<emli file name> --out=<html file name>
 ```
 ```
-emc --out<html file name> --file=<emli file name>
+emc --out=<html file name> --file=<emli file name>
 ```
 
 Both of the above are valid.
