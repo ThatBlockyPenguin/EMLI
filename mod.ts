@@ -11,7 +11,7 @@ const logger = new Logger.Builder().setName('MAIN').build();
 // Get args
 const args = jsonifyargs();
 const emliIn = path.resolve((args.file ?? args[0] ?? './index.emli').toString());
-const htmlOut = path.resolve((args.out ?? args[1] ?? './index.html').toString());
+const htmlOut = path.resolve((args.out ?? args[1] ?? './' + path.basename(emliIn, path.extname(emliIn)) + '.html').toString());
 
 // Pre-create "not found" error
 const noFileErr = new Error(`File '${emliIn}' could not be found.`);
