@@ -58,7 +58,7 @@ Well, let's start at the top.
 <br>
 `#import css '$bootstrap';` is a MetaCode, specifically an *import* MetaCode. All MetaCodes start with a '#'. `css` tells EMC that specifically, we are importing a CSS file. Lastly, `'$bootstrap'` is a string. You can get various types of strings, but more on that later. You can also import JavaScript files by using `#import js './path/to.js'`.
 
-You might notice that `$bootstrap` doesn't point to a file at all. We'll learn more about this in [Advanced Topics](advanced-topics), so for now, just take it to mean that it imports [Bootstrap CSS](https://getbootstrap.com/).
+You might notice that `$bootstrap` doesn't point to a file at all. We'll learn more about this in [Advanced Topics](#advanced-topics), so for now, just take it to mean that it imports [Bootstrap CSS](https://getbootstrap.com/).
 
 Next up, `div (class: 'container') { ... }`. This is an Element. In this case, a `div` element, which is exactly the same as from HTML. One major difference between HTML and EMLI though, is that an element's attributes are not defined like so: `<div abc="xyz">`, but instead like so: `div (abc: 'xyz')`. This means that here, we are creating a `div` element with a class of `container`. If you've used Bootstrap before, you'll know that the `container` class is used as the *"root"* of most Bootstrap webpages. Here is no different.
 
