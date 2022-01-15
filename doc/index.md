@@ -10,9 +10,9 @@ Documentation
 To install **EMC** - the **EM**LI **C**ompiler - you firstly need to have [deno](https://deno.land) installed. You can do this by visiting their website and running the appropriate script for your system.
 
 You then need to run `deno install --allow-read --allow-write -n emc https://emli.blockypenguin.com/EMLI/mod.ts` to install EMC.
-<br>
+
 If you ever wish to uninstall EMC, just run `deno uninstall emc`.
-<br>
+
 To update EMC, simply uninstall it, run `deno cache --reload https://emli.blockypenguin.com/EMLI/mod.ts`, then install it again.
 
 ## Hello, World
