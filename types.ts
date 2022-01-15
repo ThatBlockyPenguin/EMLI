@@ -90,9 +90,10 @@ export class ImportMetaDesc implements MetaDesc {
   public importType: 'js'|'css' | undefined;
 
   constructor(importType: string, public data: string) {
-    if(importType !== 'js' && importType !== 'css')
-      logger.error(new Error('Import Meta Intermediary type does not meet type requirements.'));
-    else
+    if(importType !== 'js' && importType !== 'css') {
+      logger.error('Import Meta Intermediary type does not meet type requirements.');
+      Deno.exit(-1);
+    }else
       this.importType = importType;
   }
 }

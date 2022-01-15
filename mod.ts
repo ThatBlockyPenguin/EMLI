@@ -13,17 +13,17 @@ const args = jsonifyargs();
 const emliIn = path.resolve((args.file ?? args[0] ?? './index.emli').toString());
 const htmlOut = path.resolve((args.out ?? args[1] ?? './' + path.basename(emliIn, path.extname(emliIn)) + '.html').toString());
 
-// Pre-create "not found" error
-const noFileErr = new Error(`File '${emliIn}' could not be found.`);
-
 // Check `emliIn` file exists
 try {
-  if(!Deno.lstatSync(emliIn).isFile)
-    logger.error(noFileErr);
+  if(!Deno.lstatSync(emliIn).isFile) {
+    logger.error(`File '${emliIn}' could not be found.`);
+    Deno.exit(-1);
+  }
 }catch(e: unknown) {
-  if(e instanceof Deno.errors.NotFound)
-    logger.error(noFileErr);
-  else
+  if(e instanceof Deno.errors.NotFound) {
+    logger.error(`File '${emliIn}' could not be found.`);
+    Deno.exit(-1);
+  }else
     throw e;
 }
 
