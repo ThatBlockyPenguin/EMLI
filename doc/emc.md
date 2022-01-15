@@ -1,7 +1,18 @@
 EMC Tutorial
 ============
 
-This guide will walk you through the usage of EMC.
+**EMC**: The **EM**LI **C**ompiler.
+<br>
+This guide will walk you through the installation and usage of EMC.
+
+## How to Install
+To install EMC you first need to have [deno](https://deno.land) installed on your system. You can do this by visiting their website and running the appropriate script for your system.
+
+You then need to run `deno install --allow-read --allow-write -n emc https://emli.blockypenguin.com/EMLI/mod.ts` to install EMC.
+
+If you ever wish to uninstall EMC, just run `deno uninstall emc`.
+
+To update EMC, simply uninstall it, run `deno cache --reload https://emli.blockypenguin.com/EMLI/mod.ts`, then install it again.
 
 ## How to run
 Once installed, you can run in at any time by opening a terminal/command prompt and entering `emc`. By default, EMC will look for a file in that directory called 'index.emli', and will output the compiled file in that directory as 'index.html'.
