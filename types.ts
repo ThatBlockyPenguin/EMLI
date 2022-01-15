@@ -50,7 +50,7 @@ export class BaseHTMLIntermediary implements HTMLIntermediary {
     let result = '';
     
     for(const value of this.value)
-      result += '\n' + value.toHTML(x);
+      result += ' ' + value.toHTML(x);
 
     return result;
   }
@@ -71,9 +71,9 @@ export class BodiedHTMLIntermediary implements HTMLIntermediary {
     let result = `<${this.type} ${(this.properties !== undefined) ? utils.propertiesToHTML(this.properties) : ''}>`;
 
     for(const value of this.value)
-      result += '\n' + value.toHTML(x);
+      result += value.toHTML(x);
     
-    result += `\n</${this.type}>`
+    result += `</${this.type}>`
 
     return result;
   }
