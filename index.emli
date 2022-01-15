@@ -1,7 +1,7 @@
 #title 'EMLI | Easy Markup Language for the Internet';
 #import css '$bootstrap';
 #set deno-link = a (href: 'https://deno.land') { 'deno' };
-#set install-cmd = code (class: 'bg-light border border-1 rounded p-1') { 'deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.1/EMLI/mod.ts' };
+#set install-cmd = code (class: 'bg-light border border-1 rounded p-1') { 'deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.2/mod.ts' };
 
 div (class: 'container') {
   h1 { 'Hello!' }
