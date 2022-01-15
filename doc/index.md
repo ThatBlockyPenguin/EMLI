@@ -75,7 +75,11 @@ Under that, we have `p { ... }`. As in HTML, `p` signifies a paragraph. Again, w
 Strings can look like `"this"`, `'this'`, or ``` `this` ```. Strings that are quoted with Grave Accents (``` ` ```) are called Multi-line Strings, because they can span multiple lines. Strings can be used to specify attributes (`div (class: 'container')`), for example, or to define an import (`#import js '/assets/js/script.js'`), amongst other things. When strings are used on their own (`'Hello, World!'`), they output their contents directly to the HTML.
 
 ### Import Placeholders
-You may have noticed earlier in this doc that the "Hello, World" example used '$bootstrap' as an import URL. That's because *import* MetaCodes have placeholders that can be used in place of a lengthy string. `$bootstrap` is simply a short way of requesting the [Bootstrap CSS](https://getbootstrap.com/). Currently, Bootstrap is the only available placeholder, with more on their way.
+You may have noticed earlier in this doc that the "Hello, World" example used '$bootstrap' as an import URL. That's because *import* MetaCodes have placeholders that can be used in place of a lengthy string. `$bootstrap` is simply a short way of requesting the [Bootstrap CSS](https://getbootstrap.com/). Currently, there are two placeholders available for CSS and two for JavaScript.
+
+CSS has `$bootstrap`, which imports Bootstrap CSS 5.0.2, and `$w3css`, which imports w3.css.
+
+JavaScript has `$bootstrap_bundle`, which imports the minified Bootstrap JavaScript bundle for Bootstrap 5.0.2, and `$jquery`, which imports jQuery 3.6.0.
 
 ### MetaCodes
 There are more MetaCodes than just `#import`, in fact, there are currently 6!
