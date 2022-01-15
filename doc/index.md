@@ -90,7 +90,7 @@ Note that the PostProcessor and PreProcessor MetaCodes do not require a semicolo
 ***NOTE: PreProcessors are not yet implemented and will have no effect!***
 
 #### Modify
-*Modification* MetaCodes follow the syntax of `#modify ( <properties> );`, where `<properties>` is a list of properties, like that used in an Element. They can be used to modify the configuration variables for a specific file, which are outputted at various stages throughout the compilation process.
+*Modification* MetaCodes follow the syntax of `#modify <properties>;`, where `<properties>` is a list of properties, like that used in an Element. They can be used to modify the configuration variables for a specific file, which are outputted at various stages throughout the compilation process.
 
 #### Set
 *Set* MetaCodes allow the setting of pre-defined elements to variables, which can be used in strings. For example:
