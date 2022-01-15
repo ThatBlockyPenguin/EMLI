@@ -1,8 +1,8 @@
 Documentation
 =============
 
-- [Installation](#installation)
 - [Pre-Knowledge](#pre-knowledge)
+- [Installation](#installation)
 - [Hello, World](#hello-world)
 - [Fundamentals](#fundamentals)
 - [Advanced Topics](#advanced-topics)
