@@ -12,7 +12,9 @@ div (class: 'container') {
   p { 'To install EMLI, first install $deno-link$, then run $install-cmd$' }
   p {
     'View EMLI Documentation:' a (href: '/doc') { 'Docs' } br;
-    'View EMC Tutorial:' a (href: '/doc/emc') { 'EMC Tutorial' }
+    'View EMC Tutorial:' a (href: '/doc/emc') { 'EMC Tutorial' } br;
+    'Go to Forums:' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/discussions') { 'Forums' } br;
+    'File an Issue Report:' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/issues') { 'Bug Tracker' }
   }
   br;
   p { small { '(This webpage was actually made using EMLI!) View the' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/blob/master/index.emli') { 'Source Code' } '!' } }
