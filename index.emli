@@ -15,5 +15,5 @@ div (class: 'container') {
     'View EMC Tutorial:' a (href: '/doc/emc') { 'EMC Tutorial' }
   }
   br;
-  p { small { '(This webpage was actually made using EMLI!)' } }
+  p { small { '(This webpage was actually made using EMLI!) View the' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/blob/master/index.emli') { 'Source Code' } } }
 }
