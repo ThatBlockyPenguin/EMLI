@@ -17,5 +17,5 @@ div (class: 'container') {
     'File an Issue Report:' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/issues') { 'Bug Tracker' }
   }
   br;
-  p { small { '(This webpage was actually made using EMLI!) View the' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/blob/master/index.emli') { 'Source Code' } '!' } }
+  p { small { '(This webpage was actually made using EMLI!) View the' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/blob/web/index.emli') { 'Source Code' } '!' } }
 }
