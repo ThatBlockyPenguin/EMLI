@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import Logger from 'https://deno.land/x/stick@1.0.0-beta4/mod.ts';
+import Logger from 'https://deno.land/x/stick@1.0.0-beta5/mod.ts';
 import * as utils from './utils.ts';
 
 const logger = new Logger.Builder().setName('INTERMEDIARY TYPES').build();
@@ -82,18 +82,20 @@ export class BodiedHTMLIntermediary implements HTMLIntermediary {
 // META DESC //
 
 export interface MetaDesc {
-  type: string
+  type: string,
+  unstable?: boolean,
+  deprecated?: boolean
+  positionMsg: string;
 }
 
 export class ImportMetaDesc implements MetaDesc {
   public type = 'import';
   public importType: 'js'|'css' | undefined;
 
-  constructor(importType: string, public data: string) {
-    if(importType !== 'js' && importType !== 'css') {
-      logger.error('Import Meta Intermediary type does not meet type requirements.');
-      Deno.exit(-1);
-    }else
+  constructor(importType: string, public data: string, public positionMsg: string) {
+    if(importType !== 'js' && importType !== 'css')
+      logger.error('Import Meta Intermediary type does not meet type requirements.', true);
+    else
       this.importType = importType;
   }
 }
@@ -101,29 +103,30 @@ export class ImportMetaDesc implements MetaDesc {
 export class PostProcessorMetaDesc implements MetaDesc {
   public type = 'postprocessor';
 
-  constructor(public js: string) {}
+  constructor(public js: string, public positionMsg: string) {}
 }
 
 export class PreProcessorMetaDesc implements MetaDesc {
   public type = 'preprocessor';
 
-  constructor(public js: string) {}
+  constructor(public js: string, public positionMsg: string) {}
 }
 
 export class ModifyMetaDesc implements MetaDesc {
   public type = 'modify';
 
-  constructor(public props: Record<string, string>) {}
+  constructor(public props: Record<string, string>, public positionMsg: string) {}
 }
 
 export class TitleMetaDesc implements MetaDesc {
   public type = 'title';
 
-  constructor(public title: string) {}
+  constructor(public title: string, public positionMsg: string) {}
 }
 
 export class SetMetaDesc implements MetaDesc {
   public type = 'set';
+  public unstable = true;
 
-  constructor(public id: string, public value: HTMLIntermediary) {}
+  constructor(public id: string, public value: HTMLIntermediary, public positionMsg: string) {}
 }

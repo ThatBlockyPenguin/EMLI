@@ -1,5 +1,5 @@
 // Imports
-import Logger from 'https://deno.land/x/stick@1.0.0-beta4/mod.ts';
+import Logger from 'https://deno.land/x/stick@1.0.0-beta5/mod.ts';
 import ohm from 'https://cdn.jsdelivr.net/npm/ohm-js/dist/ohm.esm.js';
 import * as utils from './utils.ts';
 import { BaseHTMLIntermediary, BodiedHTMLIntermediary, CustomHTMLIntermediary, ImportMetaDesc, ModifyMetaDesc, PostProcessorMetaDesc, PreProcessorMetaDesc, SetMetaDesc, TextHTMLIntermediary, TitleMetaDesc, UnBodiedHTMLIntermediary } from './types.ts';
@@ -17,12 +17,12 @@ logger.info(`Creating 'toIntermediate' semantics for EMLI grammar...`);
 const semantics = grammar.createSemantics().addOperation('toIntermediate', {
   Document: (meta, elements, _end) => new BaseHTMLIntermediary(meta.toIntermediate(), utils.toArray(elements)),
   MetaCodes: (_hash, _space, code) => code.toIntermediate(),
-  MetaCode_import: (_import, type, string, _semi) => new ImportMetaDesc(type.sourceString, string.toIntermediate().data),
-  MetaCode_postprocessor: (_postprocessor, body) => new PostProcessorMetaDesc(body.toIntermediate()),
-  MetaCode_preprocessor: (_preprocessor, body) => new PreProcessorMetaDesc(body.toIntermediate()),
-  MetaCode_modify: (_modify, properties, _semi) => new ModifyMetaDesc(utils.arrToObj(properties.toIntermediate())),
-  MetaCode_title: (_title, string, _semi) => new TitleMetaDesc(string.toIntermediate().data),
-  MetaCode_set: (_set, iden, _eq, element, _semi) => new SetMetaDesc(iden.sourceString, element.toIntermediate()),
+  MetaCode_import: (imp, type, string, _semi) => new ImportMetaDesc(type.sourceString, string.toIntermediate().data, imp.source.getLineAndColumnMessage()),
+  MetaCode_postprocessor: (postprocessor, body) => new PostProcessorMetaDesc(body.toIntermediate(), postprocessor.source.getLineAndColumnMessage()),
+  MetaCode_preprocessor: (preprocessor, body) => new PreProcessorMetaDesc(body.toIntermediate(), preprocessor.source.getLineAndColumnMessage()),
+  MetaCode_modify: (modify, properties, _semi) => new ModifyMetaDesc(utils.arrToObj(properties.toIntermediate()), modify.source.getLineAndColumnMessage()),
+  MetaCode_title: (title, string, _semi) => new TitleMetaDesc(string.toIntermediate().data, title.source.getLineAndColumnMessage()),
+  MetaCode_set: (set, iden, _eq, element, _semi) => new SetMetaDesc(iden.sourceString, element.toIntermediate(), set.source.getLineAndColumnMessage()),
 
   UnbodiedCall: (iden, props, _semi) => new UnBodiedHTMLIntermediary(iden.sourceString, props.toIntermediate()),
   BodiedCall: (iden, props, body) => new BodiedHTMLIntermediary(iden.sourceString, body.toIntermediate(), props.toIntermediate()),

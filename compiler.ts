@@ -1,7 +1,7 @@
 import { cheerio } from 'https://deno.land/x/cheerio@1.0.2/mod.ts';
 import * as utils from './utils.ts';
-import { BaseHTMLIntermediary, ImportMetaDesc, ModifyMetaDesc, PostProcessorMetaDesc, PreProcessorMetaDesc, SetMetaDesc, TitleMetaDesc } from './types.ts';
-import Logger from 'https://deno.land/x/stick@1.0.0-beta4/mod.ts';
+import { BaseHTMLIntermediary, ImportMetaDesc, MetaDesc, ModifyMetaDesc, PostProcessorMetaDesc, PreProcessorMetaDesc, SetMetaDesc, TitleMetaDesc } from './types.ts';
+import Logger from 'https://deno.land/x/stick@1.0.0-beta5/mod.ts';
 import defaultConfig from './config/template-config.ts';
 import template from './config/template.ts';
 
@@ -17,6 +17,8 @@ export function compile(intermediary: BaseHTMLIntermediary): string {
   const css: string[] = [];
   const js: string[] = [];
   const vars: SetMetaDesc[] = [];
+  const unstables: MetaDesc[] = [];
+  const deprecateds: MetaDesc[] = [];
   
   logger.info('Creating virtual DOM...');
   const $ = cheerio.load(template);
@@ -24,6 +26,12 @@ export function compile(intermediary: BaseHTMLIntermediary): string {
   logger.info('Converting Intermediary representation of MetaCodes to HTML...');
   // Convert Intermediary Meta to HTML
   for(const meta of intermediary.meta) {
+    if(meta.unstable)
+      unstables.push(meta);
+    
+    if(meta.deprecated)
+      deprecateds.push(meta);
+
     if(meta instanceof ImportMetaDesc) {
       if(meta.importType == 'css') // CSS
         css.push(utils.resolveImportCss(meta.data));
@@ -73,10 +81,27 @@ export function compile(intermediary: BaseHTMLIntermediary): string {
 
   logger.info('Config: ' + JSON.stringify(templateConfig));
   
-  // Add html to ble
+  // Add html to baseLevelElement
   logger.info('Adding (baseLevelElement) to Virtual DOM...');
   
-  baseLevelElement!.append(intermediary.toHTML(vars));
+  baseLevelElement.append(intermediary.toHTML(vars));
+  
+  if(unstables.length > 0) {
+    logger.warning('Unstable MetaCodes were used in this build - be warned that unstable features may become deprecated, removed, or non-functional at any time.');
+    logger.warning('The unstable MetaCodes are:');
 
+    for(const unstable of unstables)
+      logger.warning(`#${unstable.type} on ${unstable.positionMsg.substring(0, unstable.positionMsg.indexOf(':')).toLocaleLowerCase()}`);
+  }
+
+  if(deprecateds.length > 0) {
+    logger.warning('Deprecated MetaCodes were used in this build - be warned that deprecated features are likely to be removed in a future update.');
+    logger.warning('The deprecated MetaCodes are:');
+
+    for(const deprecated of deprecateds)
+      logger.warning(`#${deprecated.type} on ${deprecated.positionMsg.substring(0, deprecated.positionMsg.indexOf(':')).toLocaleLowerCase()}`);
+  }
+
+  logger.info('Compiled Successfully!');
   return $.html();
 }
