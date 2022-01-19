@@ -106,7 +106,7 @@ Note that the PostProcessor and PreProcessor MetaCodes do not require a semicolo
 
 #### Set
 <span style="color:red;">**UNSTABLE**</span><br>
-*Set* MetaCodes are unstable, meaning that they may be deprecated at any time! Once a feature is deprecated, it is most likely going to be removed in a future update.
+<span style="filter brightness(125%);">*Set* MetaCodes are unstable, meaning that they may be deprecated at any time! Once a feature is deprecated, it is most likely going to be removed in a future update.</span>
 
 *Set* MetaCodes allow the setting of pre-defined elements to variables, which can be used in strings. For example:
 ```
