@@ -68,7 +68,26 @@ Just inside it, we have `h1 { 'Hello, World!' }`. This is also the equivalent of
 
 Under that, we have a `hr` element. Like the MetaCodes, our `hr` ends in a semicolon (`;`). Why? because it is one of those "empty" elements mentioned earlier. `hr` elements cannot hold any content, so they do not have a closing tag in HTML - therefore they cannot have a Body in EMLI. Appending a semicolon signals to EMC not to add a closing tag to the HTML. `hr` stands for "Horizontal Rule", so naturally, this will render a horizontal line in our webpage at this point.
 
-Under that, we have `p { ... }`. As in HTML, `p` signifies a paragraph. Again, we don't want to specify any attributes, so we can leave out the `( ... )`. Inside the paragraph, we have a Multi-line String, containing standard "Lorem Ipsum" test text. You can read more on Multi-line strings in the next section.
+Under that, we have `p { ... }`. As in HTML, `p` signifies a paragraph. Again, we don't want to specify any attributes, so we can leave out the `( ... )`. Inside the paragraph, we have a Multi-line String, containing standard "Lorem Ipsum" test text. You can read more on Multi-line strings in the next section, [Advanced Topics](#advanced-topics).
+
+### Comments
+Comments weren't utilised in the example above, but they can be very useful.
+Comments can look like this:
+```
+// I am a comment!
+```
+or this:
+```
+/! I am also a comment!
+```
+
+The difference is, double-slash comments (`//`) will be essentially ignored by the compiler. Slashbangs (`/!`) - yes, that is a take on hashbangs - will be compiled into HTML comments. The slashbang comment above, for example, will become:
+```
+<!-- I am also a comment! -->
+```
+If you are new to programming, you may be wondering - if a comment gets ignored by the computer, than why should I use them?
+<br>
+Well, they can be used to document what a certain piece of code does, for example, making it easier to maintain.
 
 ## Advanced Topics
 ### The Technicalities of Strings
