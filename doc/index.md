@@ -15,7 +15,7 @@ You should also know the basics of how to use a terminal/command prompt. Since t
 ## Installation
 To install **EMC** - the **EM**LI **C**ompiler - you firstly need to have [deno](https://deno.land) installed. You can do this by visiting their website and running the appropriate script for your system.
 
-You then need to run `deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.3/mod.ts` to install EMC.
+You then need to run `deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.4/mod.ts` to install EMC.
 
 If you ever wish to uninstall EMC, just run `deno uninstall emc`.
 
