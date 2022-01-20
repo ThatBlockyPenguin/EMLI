@@ -14,7 +14,7 @@ export function create(grammar: ohm.Grammar, log = true) {
     Document: (meta, content, _end) => new Document(meta.toIR(), content.toIR()),
     MetaCodes: (_hash, _space, code) => code.toIR(),
 
-    MetaCode_import: (imp, type, str, _semi) => new ImportMeta(type.sourceString as 'js' | 'css', str.toIR(), imp.source),
+    MetaCode_import: (imp, type, str, _semi) => new ImportMeta(type.sourceString as 'js' | 'css', (str.toIR() as Text).value, imp.source),
     MetaCode_postprocessor: (post, js) => new PostProcessorMeta(js.toIR(), post.source),
     MetaCode_preprocessor: (pre, js) => new PreProcessorMeta(js.toIR(), pre.source),
     MetaCode_modify: (mod, props, _semi) => new ModificationMeta(unfold(props.toIR()), mod.source),
