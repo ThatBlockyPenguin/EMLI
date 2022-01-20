@@ -9,9 +9,9 @@ EMLI {
            | "title" string ";"                    --title
            | "set" identifier "=" Element ";"      --set
   
-  Element = BodiedCall | UnbodiedCall
-  UnbodiedCall = identifier Properties? ";"
-  BodiedCall = identifier Properties? Body
+  Element = BodiedElement | UnbodiedElement
+  UnbodiedElement = identifier Properties? ";"
+  BodiedElement = identifier Properties? Body
 
   Body = "{" (Element | string | comments)* "}"
   Properties = "(" ListOf<Property, ","> ")"

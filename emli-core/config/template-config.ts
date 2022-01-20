@@ -1,5 +1,5 @@
 export default {
-  "baseLevelElement": "html > body"
+  baseLevelElement: 'html > body'
 } as TemplateConfig;
 
 interface TemplateConfig {
