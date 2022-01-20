@@ -1,8 +1,8 @@
 import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
-import config from './emli-core/config/mod.ts';
+import config from '../emli-core/config/mod.ts';
 import * as semantics from './semantics.ts';
-import Document from './emli-core/types/document.ts';
-import { SetMeta } from './emli-core/types/metacodes.ts';
+import Document from '../emli-core/types/document.ts';
+import { SetMeta } from '../emli-core/types/metacodes.ts';
 
 // Create parser
 const logger = config.logger('PARSER');

@@ -1,8 +1,8 @@
 import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
-import config from './emli-core/config/mod.ts';
-import Document from './emli-core/types/document.ts';
-import { HTMLComment, NonSelfClosingElement, SelfClosingElement, Text } from './emli-core/types/elements.ts';
-import { ImportMeta, ModificationMeta, PostProcessorMeta, PreProcessorMeta, SetMeta, TitleMeta } from './emli-core/types/metacodes.ts';
+import config from '../emli-core/config/mod.ts';
+import Document from '../emli-core/types/document.ts';
+import { HTMLComment, NonSelfClosingElement, SelfClosingElement, Text } from '../emli-core/types/elements.ts';
+import { ImportMeta, ModificationMeta, PostProcessorMeta, PreProcessorMeta, SetMeta, TitleMeta } from '../emli-core/types/metacodes.ts';
 
 const logger = config.logger('SEMANTICS BUILDER');
 
