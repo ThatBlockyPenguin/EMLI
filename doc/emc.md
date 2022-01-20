@@ -42,4 +42,4 @@ or
 ```
 emc --file=.
 ```
-will run EMC on every '\*.emli' file in the current directory. When doing this, the `out` argument is ignored, and each file is saved as '&lt;name of emli file&gt;.html'
+This will run EMC on every '\*.emli' file in the current directory. When doing this, the `out` argument is ignored, and each file is saved as '&lt;name of emli file&gt;.html'
