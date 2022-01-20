@@ -1,6 +1,6 @@
 export default String.raw`
 EMLI {
-  Document = MetaCodes ListOf<(Element | ElemDef | string | comments), spaces> end
+  Document = MetaCodes ListOf<(Element | string | comments), spaces> end
   MetaCodes = (("#" (~nl space)* MetaCode) | "" "" comment)*
   MetaCode = "import" ("js" | "css") string ";"    --import
            | "postprocessor" jsBody                --postprocessor
@@ -9,18 +9,13 @@ EMLI {
            | "title" string ";"                    --title
            | "set" identifier "=" Element ";"      --set
   
-  Element = BodiedElement | UnbodiedElement
-  UnbodiedElement = identifier Properties? ";"
-  BodiedElement = identifier Properties? Body
+  Element = BodiedCall | UnbodiedCall
+  UnbodiedCall = identifier Properties? ";"
+  BodiedCall = identifier Properties? Body
 
   Body = "{" (Element | string | comments)* "}"
   Properties = "(" ListOf<Property, ","> ")"
   Property = identifier ":" string
-
-  ElemDef = DefMods "custom" ":" identifier "=" Element
-  DefMods = ("@" DefMod ";")+
-  DefMod = "bodied" string                         --bodied
-         | "unbodied"                              --unbodied
   
   identifier = ("-" | alnum)+
   nl (a new line) = "\n" | "\r" | "\u2028" | "\u2029"
