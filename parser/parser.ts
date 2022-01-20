@@ -7,13 +7,17 @@ import { SetMeta } from '../emli-core/types/metacodes.ts';
 // Create parser
 const logger = config.logger('PARSER');
 
-// Create grammar and semantics
+// Create grammar
 const grammar = ohm.grammar(config.grammar);
-const sem = semantics.create(grammar);
 
 // Export `parse` function to parse EMLI
 export function parse(input: string, log = true): Document | undefined {
+  // Create semantics
+  const sem = semantics.create(grammar, log);
+
   // Match input to `Document` rule
+  if(log)
+    logger.info('Starting Parse...');
   const match = grammar.match(input, 'Document');
 
   if(match.succeeded()) {
@@ -29,8 +33,11 @@ export function parse(input: string, log = true): Document | undefined {
   }
 }
 
-// Strip all `null`s
-function refineIntermediary(doc: Document): Document {
+// Strip all `null`s and add vars
+function refineIntermediary(doc: Document, log = true): Document {
+  if(log)
+    logger.info('Refining IR...');
+  
   doc.contents = doc.contents.filter(el => el !== null);
   doc.meta = doc.meta.filter(m => m !== null);
 
@@ -38,6 +45,9 @@ function refineIntermediary(doc: Document): Document {
     if(meta instanceof SetMeta)
       doc.vars = Object.assign(doc.vars, { [meta.id]: meta.val });
   }
+
+  if(log)
+    logger.info('Done!');
 
   return doc;
 }

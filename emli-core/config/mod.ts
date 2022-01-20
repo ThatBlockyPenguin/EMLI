@@ -7,6 +7,6 @@ import Logger from 'https://deno.land/x/stick@1.0.0-beta5/mod.ts';
 export default {
   grammar,
   placeholders,
-  template: Object.assign(template, {config: templateconfig}),
+  template: { config: templateconfig, get: () => template },
   logger: (name: string) => new Logger.Builder().setLabel(Logger.Labels.HH_MM_SS).setName(name).build(),
 }

@@ -3,5 +3,6 @@ export default {
 } as TemplateConfig;
 
 interface TemplateConfig {
-  baseLevelElement: string
+  baseLevelElement: string,
+  [x: string]: string;
 }

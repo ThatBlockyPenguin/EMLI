@@ -6,19 +6,20 @@ import { ImportMeta, ModificationMeta, PostProcessorMeta, PreProcessorMeta, SetM
 
 const logger = config.logger('SEMANTICS BUILDER');
 
-export function create(grammar: ohm.Grammar) {
-  logger.info('Defining semantics for EMLI grammar...');
+export function create(grammar: ohm.Grammar, log = true) {
+  if(log)
+    logger.info('Defining semantics for EMLI grammar...');
 
   const sem = grammar.createSemantics().addOperation('toIR', {
     Document: (meta, content, _end) => new Document(meta.toIR(), content.toIR()),
     MetaCodes: (_hash, _space, code) => code.toIR(),
 
-    MetaCode_import: (_imp, type, str, _semi) => new ImportMeta(type.sourceString as 'js' | 'css', str.toIR()),
-    MetaCode_postprocessor: (_post, js) => new PostProcessorMeta(js.toIR()),
-    MetaCode_preprocessor: (_pre, js) => new PreProcessorMeta(js.toIR()),
-    MetaCode_modify: (_mod, props, _semi) => new ModificationMeta(unfold(props.toIR())),
-    MetaCode_title: (_title, str, _semi) => new TitleMeta((str.toIR() as Text).value),
-    MetaCode_set: (_set, iden, _eq, el, _semi) => new SetMeta(iden.toIR(), el.toIR()),
+    MetaCode_import: (imp, type, str, _semi) => new ImportMeta(type.sourceString as 'js' | 'css', str.toIR(), imp.source),
+    MetaCode_postprocessor: (post, js) => new PostProcessorMeta(js.toIR(), post.source),
+    MetaCode_preprocessor: (pre, js) => new PreProcessorMeta(js.toIR(), pre.source),
+    MetaCode_modify: (mod, props, _semi) => new ModificationMeta(unfold(props.toIR()), mod.source),
+    MetaCode_title: (title, str, _semi) => new TitleMeta((str.toIR() as Text).value, title.source),
+    MetaCode_set: (set, iden, _eq, el, _semi) => new SetMeta(iden.toIR(), el.toIR(), set.source),
 
     UnbodiedElement: (iden, props, _semi) => new SelfClosingElement(iden.toIR(), unfold(props.toIR())),
     BodiedElement: (iden, props, body) => new NonSelfClosingElement(iden.toIR(), unfold(props.toIR()), body.toIR()),
@@ -50,12 +51,15 @@ export function create(grammar: ohm.Grammar) {
     _iter: (...children) => children.map(c => c.toIR()),
   });
 
-  logger.info('Done!');
+  if(log)
+    logger.info('Done!');
 
   return sem;
 }
 
-function unfold(props: [Record<string, string>] | []): Record<string, string> {
-  if(props.length == 0) return {};
-  else return props[0];
+function unfold(props: [Record<string, string>] | Record<string, string>[] | Record<string, string>): Record<string, string> {
+  if(Array.isArray(props))
+    if(props.length == 0) return {};
+    else return props[0];
+  else return props;
 }
