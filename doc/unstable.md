@@ -1,7 +1,7 @@
 Unstable
 ========
 
-Unstable features are being considered for deprecation. If EMC flags up an unstable feature in your code, be warned that it may be marked as deprecated at any time.
+Unstable features are being considered for deprecation. If EMC flags up an unstable feature in your code, be warned that it may be marked as deprecated at any time. This could be in the next major or minor version.
 
 <br>
 
