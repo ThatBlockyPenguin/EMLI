@@ -16,6 +16,9 @@ A clear and concise description of what you expected to happen.
 **Screenshots/Logs**
 Please add screenshot(s) of or copied output from the compiler here.
 
+**EMLI Code**
+Please paste the EMLI code (or a link to it) which contains the code that causes EMC to crash.
+
 **To Reproduce**
 Steps to reproduce the behaviour:
 1. Go to '...'
