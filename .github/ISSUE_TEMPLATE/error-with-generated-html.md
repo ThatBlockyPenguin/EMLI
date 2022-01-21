@@ -13,15 +13,14 @@ A clear and concise description of what the error is.
 **Expected behaviour**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-Please add screenshot(s) of the problematic code being rendered in a browser.
+**EMLI Code**
+Please paste the EMLI code (or a link to it) which contains the erroring code.
 
-**To Reproduce**
-Steps to reproduce the behaviour:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**HTML Code**
+Please paste the generated HTML code (or a link to it) which the code above was compiled to.
+
+**Screenshots**
+Please add screenshot(s) of the code being rendered in a browser.
 
 **Additional context**
 Add any other context about the problem here.
