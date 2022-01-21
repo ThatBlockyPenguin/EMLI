@@ -2,25 +2,23 @@ export default String.raw`
 EMLI {
   Document = MetaCodes ListOf<(Element | ElemDef | string | comments), spaces> end
   MetaCodes = (("#" (~nl space)* MetaCode) | "" "" comment)*
-  MetaCode = "import" ("js" | "css") string ";"    --import
-           | "postprocessor" jsBody                --postprocessor
-           | "preprocessor" jsBody                 --preprocessor
-           | "modify" Properties ";"               --modify
-           | "title" string ";"                    --title
-           | "set" identifier "=" Element ";"      --set
+  MetaCode = "import" ("js" | "css") string ";"                       --import
+           | "postprocessor" jsBody                                   --postprocessor
+           | "preprocessor" jsBody                                    --preprocessor
+           | "modify" Properties ";"                           --modify
+           | "title" string ";"                                       --title
+           | "set" identifier "=" Element ";"                         --set
   
-  Element = BodiedElement | UnbodiedElement
-  UnbodiedElement = identifier Properties? ";"
-  BodiedElement = identifier Properties? Body
+  Element = identifier Properties? ";"                         --unbodied
+          | identifier Properties? Body                        --bodied
+          | "custom" ":" identifier CustomProps? ";"        --customCall
+  
+  ElemDef = "custom" ":" identifier "=" (Element_unbodied | Element_bodied)
 
   Body = "{" (Element | string | comments)* "}"
   Properties = "(" ListOf<Property, ","> ")"
+  CustomProps = "[" ListOf<Property, ","> "]"
   Property = identifier ":" string
-
-  ElemDef = DefMods "custom" ":" identifier "=" Element
-  DefMods = ("@" DefMod ";")+
-  DefMod = "bodied" string                         --bodied
-         | "unbodied"                              --unbodied
   
   identifier = ("-" | alnum)+
   nl (a new line) = "\n" | "\r" | "\u2028" | "\u2029"

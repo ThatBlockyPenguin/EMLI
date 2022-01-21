@@ -1,12 +1,9 @@
 import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
 import { NoCommentContents } from './elements.ts';
+import { IDeprecatable } from './deprecatable.ts';
 
-export interface IMetaCode {
-  trial?: boolean,
-  unstable?: boolean,
-  deprecated?: boolean,
-  position: string,
-}
+// deno-lint-ignore no-empty-interface
+export interface IMetaCode extends IDeprecatable {}
 
 export class ImportMeta implements IMetaCode {
   public trial = false;

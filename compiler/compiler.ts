@@ -11,8 +11,9 @@ export function compile(doc: Document, log = true): string {
   if(log) logger.info('Starting Compilation...');
 
   // LOAD TEMPLATE
-  if (log) logger.info('Creating virtual DOM...');
+  if(log) logger.info('Creating virtual DOM...');
   const $ = cheerio.load(config.template.get());
+  if(log) logger.info('Done!');
 
 
   /////////////////////////////////////////////////////
@@ -45,23 +46,9 @@ export function compile(doc: Document, log = true): string {
     }
 
     // Set Metas are dealt with by the parser
-
-    if(meta.deprecated && log) {
-      logger.warning('Deprecated MetaCodes were used in this build! See https://emli.blockypenguin.com/doc/deprecation for more info.');
-      logger.warning(`Deprecated MetaCode at ${meta.position}!`);
-    }
-    
-    if(meta.trial && log) {
-      logger.warning('Trial-mode MetaCodes were used in this build! See https://emli.blockypenguin.com/doc/trial-mode for more info.');
-      logger.warning(`Trial-mode MetaCode at ${meta.position}!`);
-    }
-    
-    if(meta.unstable && log) {
-      logger.warning('Unstable MetaCodes were used in this build! See https://emli.blockypenguin.com/doc/unstable for more info.');
-      logger.warning(`Unstable MetaCode at ${meta.position}!`);
-    }
   }
 
+  
   /////////////////////////////////////////////////////
   ///          CONFIG HANDLING CODE BELOW           ///
   /////////////////////////////////////////////////////
@@ -71,8 +58,7 @@ export function compile(doc: Document, log = true): string {
 
   // Set config from `#modify`s
   if(mods.length > 0) {
-    if(log)
-      logger.info('Modifying Config!');
+    if(log) logger.info('Modifying Config!');
 
     for(const mod of mods)
       templateConfig = Object.assign(templateConfig, mod.properties);

@@ -1,7 +1,7 @@
 import ohm from 'https://unpkg.com/ohm-js@16/dist/ohm.esm.js';
 import config from '../emli-core/config/mod.ts';
 import Document from '../emli-core/types/document.ts';
-import { HTMLComment, NonSelfClosingElement, SelfClosingElement, Text } from '../emli-core/types/elements.ts';
+import { CustomElementCall, CustomElementDef, HTMLComment, NonSelfClosingElement, SelfClosingElement, Text } from '../emli-core/types/elements.ts';
 import { ImportMeta, ModificationMeta, PostProcessorMeta, PreProcessorMeta, SetMeta, TitleMeta } from '../emli-core/types/metacodes.ts';
 
 const logger = config.logger('SEMANTICS BUILDER');
@@ -21,16 +21,27 @@ export function create(grammar: ohm.Grammar, log = true) {
     MetaCode_title: (title, str, _semi) => new TitleMeta((str.toIR() as Text).value, title.source),
     MetaCode_set: (set, iden, _eq, el, _semi) => new SetMeta(iden.toIR(), el.toIR(), set.source),
 
-    UnbodiedElement: (iden, props, _semi) => new SelfClosingElement(iden.toIR(), unfold(props.toIR())),
-    BodiedElement: (iden, props, body) => new NonSelfClosingElement(iden.toIR(), unfold(props.toIR()), body.toIR()),
+    Element_unbodied: (iden, props, _semi) => new SelfClosingElement(iden.toIR(), unfold(props.toIR())),
+    Element_bodied: (iden, props, body) => new NonSelfClosingElement(iden.toIR(), unfold(props.toIR()), body.toIR()),
+    Element_customCall: (custom, _colon, iden, props, _semi) => new CustomElementCall(iden.toIR(), unfold(props.toIR()), custom.source),
+
+    ElemDef: (custom, _colon, iden, _eq, elem) => new CustomElementDef(iden.toIR(), elem.toIR(), custom.source),
 
     Body: (_lb, elem, _rb) => elem.toIR(),
-    Properties: (_lb, propList, _rb) => {
+    Properties: (_lb, propList, _rb) => { // SAME AS CUSTOMPROPS
       let props = {};
 
       for (const item of propList.toIR())
         props = Object.assign(props, item);
         
+      return props;
+    },
+    CustomProps: (_lb, propList, _rb) => { // SAME AS PROPERTIES
+      let props = {};
+
+      for (const item of propList.toIR())
+        props = Object.assign(props, item);
+
       return props;
     },
     Property: (iden, _colon, str) => ({ [iden.sourceString]: (str.toIR() as Text).value }),
