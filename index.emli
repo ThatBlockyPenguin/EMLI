@@ -1,7 +1,7 @@
 #title 'EMLI | Easy Markup Language for the Internet';
 #import css '$bootstrap';
 #set deno-link = a (href: 'https://deno.land') { 'deno' };
-#set install-cmd = code (class: 'bg-light border border-1 rounded p-1') { 'deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.4/mod.ts' };
+#set install-cmd = code (class: 'bg-light border border-1 rounded p-1') { 'deno install --allow-read --allow-write -n emc https://cdn.jsdelivr.net/gh/ThatBlockyPenguin/WSS-EMLI@v0.1.0-alpha.5/mod.ts' };
 
 div (class: 'container') {
   h1 { 'Hello!' }
@@ -15,7 +15,6 @@ div (class: 'container') {
     'View EMC Tutorial: ' a (href: '/doc/emc') { 'EMC Tutorial' } br;
     'Go to Forums: ' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/discussions') { 'Forums' } br;
     'File an Issue Report: ' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/issues') { 'Bug Tracker' } br;
-    'Try EMLI online: ' a (href: '/editor') { 'Online Editor' } br;
     'View EMLI on GitHub: ' a (href: 'https://github.com/ThatBlockyPenguin/WSS-EMLI/') { 'GitHub' }
   }
   br;
