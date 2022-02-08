@@ -43,3 +43,5 @@ or
 emc --file=.
 ```
 This will run EMC on every '\*.emli' file in the current directory. When doing this, the `out` argument is ignored, and each file is saved as '&lt;name of emli file&gt;.html'
+
+You can also use the `--noupdate` flag to skip the version check at the beginning.
