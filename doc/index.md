@@ -153,3 +153,19 @@ This is valid:
 This is not:
 <br>
 `#set line = hr;`
+
+### Custom Elements
+Custom elements allow you to essentially define your own elements - like so:
+```
+custom:test = a (href: 'https://emli.blockypenguin.com/doc') { 'Test Link! $text$' }
+
+custom:text[text: 'Lorem Ipsum!'];
+```
+This code declares the custom element "test" as a link to this webpage, with the text "Test Link! $text$".
+<br>
+Then, it calls that custom element, and passes in the property `text` with a value of "Lorem Ipsum!". This will essentially *paste* the custom element at that position, and replace "$text$" in the link's contents with "Lorem Ipsum!", the value of `text`, in the style of *Set* MetaCodes.
+
+The resulting HTML code would look something like this:
+```
+<a href="https://emli.blockypenguin.com/doc">Test Link! Lorem Ipsum!</a>
+```
