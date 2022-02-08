@@ -155,6 +155,9 @@ This is not:
 `#set line = hr;`
 
 ### Custom Elements
+<span style="color:green;">**TRIAL**</span><br>
+<span style="filter:brightness(135%);">Custom Elements is a Trial Mode feature, meaning that it has recently been added and may not yet be complete. It is experimental, may have bugs, and may be removed in the future.</span>
+
 Custom elements allow you to essentially define your own elements - like so:
 ```
 custom:test = a (href: 'https://emli.blockypenguin.com/doc') { 'Test Link! $text$' }
