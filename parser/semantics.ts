@@ -39,7 +39,7 @@ export function create(grammar: ohm.Grammar, log = true) {
     CustomProps: (_lb, propList, _rb) => { // SAME AS PROPERTIES
       let props = {};
 
-      for (const item of propList.toIR())
+      for(const item of propList.toIR())
         props = Object.assign(props, item);
 
       return props;

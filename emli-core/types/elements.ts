@@ -12,11 +12,13 @@ export class Text {
   constructor(public value: string) { }
 
   toHTML(doc: Document) {
+    let value = this.value;
+
     for(const id in doc.vars)
       if(this.value.includes(`$${id}$`))
-        this.value = this.value.replaceAll(`$${id}$`, doc.vars[id].toHTML(doc));
+        value = value.replaceAll(`$${id}$`, doc.vars[id].toHTML(doc));
     
-    return this.value;
+    return value;
   }
 }
 

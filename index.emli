@@ -1,0 +1,7 @@
+custom:test = a (href: 'https://emli.blockypenguin.com') { '$text$' }
+
+p {
+  'Testing, ' custom:test[text: '1, 2']; '!'
+  br;
+  'After that comes ' custom:test[text: '3, 4 and 5']; '!'
+}
