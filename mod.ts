@@ -11,7 +11,7 @@ const version = 'v0.1.0-alpha.6';
 const args = jsonifyargs();
 const inFile = path.resolve((args.file ?? args[0] ?? './index.emli').toString());
 const outFile = path.resolve((args.out ?? args[1] ?? './' + path.basename(inFile, path.extname(inFile)) + '.html').toString());
-const noUpdates = args.u ?? false;
+const noUpdates = args.noupdate ?? false;
 
 const logger = config.logger('MAIN');
 
